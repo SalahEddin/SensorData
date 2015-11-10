@@ -8,10 +8,14 @@
 
 import WatchKit
 import Foundation
+import WatchConnectivity
 
 
-class InterfaceController: WKInterfaceController {
+class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
+    @IBOutlet var mMessageLabel: WKInterfaceLabel!
+    var session: WCSession!
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
@@ -21,6 +25,12 @@ class InterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
+        if(WCSession.isSupported()){
+            self.session = WCSession.defaultSession()
+            self.session.delegate = self
+            self.session.activateSession()
+        }
     }
 
     override func didDeactivate() {
@@ -28,4 +38,14 @@ class InterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
 
+    @IBAction func sendMessage() {
+        if(WCSession.isSupported()){
+            session.sendMessage(["b":"goodBye"], replyHandler: nil, errorHandler: nil)
+        }
+    }
+    
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
+        //recieving message from iphone
+        self.mMessageLabel.setText(message["a"]! as? String)
+    }
 }
