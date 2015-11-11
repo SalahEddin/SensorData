@@ -12,6 +12,9 @@ import WatchConnectivity
 class ViewController: UIViewController, WCSessionDelegate {
     var session: WCSession!
     @IBOutlet weak var mResultLabel: UILabel!
+    @IBOutlet weak var xLabel: UILabel!
+    @IBOutlet weak var yLabel: UILabel!
+    @IBOutlet weak var zLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -35,6 +38,9 @@ class ViewController: UIViewController, WCSessionDelegate {
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
         //recieve messages from watch
         self.mResultLabel.text = message["b"]! as? String
+        self.xLabel.text = message["x"]! as? String
+        self.yLabel.text = message["y"]! as? String
+        self.zLabel.text = message["z"]! as? String
         dispatch_async(dispatch_get_main_queue(), {
             self.mResultLabel.text = message["b"]! as? String
         })

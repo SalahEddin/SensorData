@@ -80,6 +80,9 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
                 self.xLabel.setText(String(format: "%.2f", data!.acceleration.x))
                 self.yLabel.setText(String(format: "%.2f", data!.acceleration.y))
                 self.zLabel.setText(String(format: "%.2f", data!.acceleration.z))
+                self.session.sendMessage(["x":String(format: "%.2f", data!.acceleration.x)], replyHandler: nil, errorHandler: nil)
+                self.session.sendMessage(["y":String(format: "%.2f", data!.acceleration.y)], replyHandler: nil, errorHandler: nil)
+                self.session.sendMessage(["z":String(format: "%.2f", data!.acceleration.z)], replyHandler: nil, errorHandler: nil)
             }
             motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue()!, withHandler: handler)
         }
