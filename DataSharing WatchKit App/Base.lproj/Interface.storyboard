@@ -10,7 +10,7 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="DataSharing_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <label width="136" height="83" alignment="left" text="Message will be here" textAlignment="center" id="WDE-uD-cww"/>
+                        <label width="136" height="69" alignment="left" text="Message will be here" textAlignment="center" id="WDE-uD-cww"/>
                         <button width="1" alignment="left" title="Static" id="8u6-MR-lPV">
                             <connections>
                                 <action selector="sendMessage" destination="AgC-eL-Hgc" id="zrg-zy-bPU"/>
@@ -21,9 +21,19 @@
                                 <action selector="sendHeartRate" destination="AgC-eL-Hgc" id="eX9-KJ-o8b"/>
                             </connections>
                         </button>
+                        <group width="1" alignment="left" id="lkA-Sa-iZQ">
+                            <items>
+                                <label width="0.33000000000000002" alignment="left" text="X" textAlignment="center" id="TFd-u7-yli"/>
+                                <label width="0.33000000000000002" alignment="left" text="Y" textAlignment="center" id="IvB-uT-xnr"/>
+                                <label width="0.33000000000000002" alignment="left" text="Z" textAlignment="center" id="pdi-hn-XNV"/>
+                            </items>
+                        </group>
                     </items>
                     <connections>
                         <outlet property="mMessageLabel" destination="WDE-uD-cww" id="fj0-q0-apr"/>
+                        <outlet property="xLabel" destination="TFd-u7-yli" id="4Li-bY-pxO"/>
+                        <outlet property="yLabel" destination="IvB-uT-xnr" id="aqf-kY-304"/>
+                        <outlet property="zLabel" destination="pdi-hn-XNV" id="txm-6i-rQC"/>
                     </connections>
                 </controller>
             </objects>
